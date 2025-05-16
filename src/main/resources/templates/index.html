@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Enhanced DevOps Security Using AI</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px 40px 40px 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(60, 72, 88, 0.13), 0 1.5px 4px rgba(60, 72, 88, 0.07);
+        }
+        h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            margin-bottom: 0.5em;
+            letter-spacing: 1px;
+        }
+        h2 {
+            color: #3b4252;
+            margin-top: 2em;
+            margin-bottom: 0.7em;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.2em;
+        }
+        h3 {
+            color: #4f5d75;
+            margin-bottom: 0.5em;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .team {
+            margin-bottom: 18px;
+            padding: 16px 0 0 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 18px;
+        }
+        li {
+            background: #f1f5f9;
+            color: #22223b;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            box-shadow: 0 1px 3px rgba(60,72,88,0.07);
+        }
+        .comments {
+            margin-top: 40px;
+        }
+        .comment {
+            background: linear-gradient(90deg, #e0e7ef 0%, #f8fafc 100%);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 1.08rem;
+            color: #2d3748;
+            box-shadow: 0 1px 4px rgba(60,72,88,0.06);
+            word-break: break-word;
+        }
+        form {
+            margin-bottom: 18px;
+        }
+        form textarea {
+            width: 100%;
+            height: 70px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            padding: 10px;
+            font-size: 1.05rem;
+            resize: vertical;
+            background: #f8fafc;
+            transition: border 0.2s;
+        }
+        form textarea:focus {
+            outline: none;
+            border: 1.5px solid #4f5d75;
+            background: #fff;
+        }
+        form button {
+            margin-top: 10px;
+            background: linear-gradient(90deg, #4f5d75 0%, #22223b 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 26px;
+            font-size: 1.08rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(60,72,88,0.09);
+            transition: background 0.2s, transform 0.1s;
+        }
+        form button:hover {
+            background: linear-gradient(90deg, #22223b 0%, #4f5d75 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        hr {
+            border: none;
+            border-top: 1.5px solid #e2e8f0;
+            margin: 24px 0 18px 0;
+        }
+        .xss-tip {
+            background: #fffbe6;
+            color: #b7791f;
+            border-left: 4px solid #ecc94b;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-top: 18px;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 18px 6vw 24px 6vw;
+            }
+            ul {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Enhanced DevOps Security Using AI</h1>
+    <p style="color:#4f5d75;font-size:1.13rem;">
+        This project focuses on enhancing the security of DevOps environments by integrating Artificial 
+        Intelligence (AI) and Machine Learning (ML). The primary goal is to automate tasks like threat detection, 
+        vulnerability scanning, and incident response, creating a smoother and more secure software development 
+        process. By leveraging AI/ML, the project aims to detect unusual activities, monitor logs and network 
+        traffic in real time, and automate security checks within CI/CD pipelines.
+    </p>
+    <h2>Team Members</h2>
+    <div class="team">
+        <h3>AI Team</h3>
+        <ul>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'AI Team'}" th:text="${m.name}"></li>
+        </ul>
+    </div>
+    <div class="team">
+        <h3>Monitoring Team</h3>
+        <ul>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Monitoring Team'}" th:text="${m.name}"></li>
+        </ul>
+    </div>
+    <div class="team">
+        <h3>Security Team</h3>
+        <ul>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Security Team'}" th:text="${m.name}"></li>
+        </ul>
+    </div>
+    <div class="comments">
+        <h2>Comments</h2>
+        <form method="post" th:action="@{/comment}">
+            <textarea name="comment" placeholder="Leave a comment..."></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+        <hr>
+        <div th:each="c : ${comments}" class="comment" th:utext="${c}"></div>
+    </div>
+</div>
+</body>
+</html>
