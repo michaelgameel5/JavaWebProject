@@ -1,5 +1,5 @@
-/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/DevSecOpsApplication.java
-/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/config/WebConfig.java
-/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/controller/HomeController.java
-/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/model/TeamMember.java
-/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/service/DataService.java
+/home/blactive/Projects/DevSecOps-CI-test/src/main/java/com/web/DevSecOps/DevSecOpsApplication.java
+/home/blactive/Projects/DevSecOps-CI-test/src/main/java/com/web/DevSecOps/config/WebConfig.java
+/home/blactive/Projects/DevSecOps-CI-test/src/main/java/com/web/DevSecOps/controller/HomeController.java
+/home/blactive/Projects/DevSecOps-CI-test/src/main/java/com/web/DevSecOps/model/TeamMember.java
+/home/blactive/Projects/DevSecOps-CI-test/src/main/java/com/web/DevSecOps/service/DataService.java
