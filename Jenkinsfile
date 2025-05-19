@@ -38,7 +38,7 @@ pipeline {
       steps { 
         echo "Running Static application security testing using SonarQube Scanner ..."
         withSonarQubeEnv('sonarqube') {
-            sh 'mvn sonar:sonar -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html -Dsonar.projectName=Test-Build'
+            sh 'mvn sonar:sonar -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json -Dsonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html -Dsonar.projectName=DevSecOps'
        }
       }
     }
@@ -62,7 +62,7 @@ pipeline {
         echo "Build Docker Image"
         script {
                docker.withRegistry( '', registryCredential ) { 
-                 myImage = docker.build registry
+                 myImage = docker.build registry + ":$BUILD_NUMBER" 
                  myImage.push()
                 }
         }
@@ -72,17 +72,26 @@ pipeline {
    stage('Stage VII: Scan Image ') {
       steps { 
         echo "Scanning Image for Vulnerabilities"
-        sh "trivy image --scanners vuln --offline-scan omarabduh/devsecops:latest > trivyresults.txt"
+        sh "trivy image --scanners vuln --offline-scan omarabduh/devsecops:$BUILD_NUMBER > trivyresults.txt"
         }
     }
           
    stage('Stage VIII: Smoke Test ') {
       steps { 
         echo "Smoke Test the Image"
-        sh "docker run -d --name smokerun -p 8080:8080 omarabduh/devsecops"
+        sh "docker run -d --name smokerun -p 8080:8080 omarabduh/devsecops:$BUILD_NUMBER"
         sh "sleep 90; chmod +x check.sh; ./check.sh"
         sh "docker rm --force smokerun"
         }
+    }
+     stage('Stage IX: Trigger Deployment'){
+      steps { 
+       script {
+        TAG = "$BUILD_NUMBER"
+         echo "Trigger CD Pipeline"
+          build wait: false, job: 'Deploy-CD', parameters: [string(name: 'IMAGETAG', value: TAG)]
+       }
+      }
     }
 
   }
