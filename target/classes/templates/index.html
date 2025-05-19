@@ -119,6 +119,20 @@
             font-size: 1rem;
             margin-top: 18px;
         }
+        .member-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            vertical-align: middle;
+            border: 2px solid #e2e8f0;
+            background: #fff;
+        }
+        .member-info {
+            display: flex;
+            align-items: center;
+        }
         @media (max-width: 700px) {
             .container {
                 padding: 18px 6vw 24px 6vw;
@@ -144,19 +158,34 @@
     <div class="team">
         <h3>AI Team</h3>
         <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'AI Team'}" th:text="${m.name}"></li>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'AI Team'}">
+                <span class="member-info">
+                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
+                    <span th:text="${m.name}"></span>
+                </span>
+            </li>
         </ul>
     </div>
     <div class="team">
         <h3>Monitoring Team</h3>
         <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Monitoring Team'}" th:text="${m.name}"></li>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Monitoring Team'}">
+                <span class="member-info">
+                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
+                    <span th:text="${m.name}"></span>
+                </span>
+            </li>
         </ul>
     </div>
     <div class="team">
         <h3>Security Team</h3>
         <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Security Team'}" th:text="${m.name}"></li>
+            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Security Team'}">
+                <span class="member-info">
+                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
+                    <span th:text="${m.name}"></span>
+                </span>
+            </li>
         </ul>
     </div>
     <div class="comments">
