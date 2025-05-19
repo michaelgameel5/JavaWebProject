@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>CommentServlet</servlet-name>
-        <servlet-class>com.example.servlet.CommentServlet</servlet-class>
+        <servlet-class>com.web.DevSecOps.CommentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CommentServlet</servlet-name>

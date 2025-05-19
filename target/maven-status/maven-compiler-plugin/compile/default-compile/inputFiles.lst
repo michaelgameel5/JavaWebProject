@@ -1,4 +1,5 @@
-C:\xampp\htdocs\JavaWebProject\src\main\java\com\example\JavaWebProjectApplication.java
-C:\xampp\htdocs\JavaWebProject\src\main\java\com\example\model\TeamMember.java
-C:\xampp\htdocs\JavaWebProject\src\main\java\com\example\controller\HomeController.java
-C:\xampp\htdocs\JavaWebProject\src\main\java\com\example\service\DataService.java
+/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/DevSecOpsApplication.java
+/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/config/WebConfig.java
+/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/controller/HomeController.java
+/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/model/TeamMember.java
+/home/blactive/Projects/DevSecOps/src/main/java/com/web/DevSecOps/service/DataService.java
