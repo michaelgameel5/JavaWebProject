@@ -8,27 +8,35 @@ import java.util.List;
 
 @Service
 public class DataService {
+
+    private static final String MEMBER = "Member";
+    private static final String SUPERVISOR = "Supervisor";
+    private static final String SUPERVISION = "Supervision";
+    private static final String SECURITY_TEAM = "Security Team";
+    private static final String MONITORING_TEAM = "Monitoring Team";
+    private static final String AI_TEAM = "AI Team";
+
     private final List<TeamMember> teamMembers = new ArrayList<>();
     private final List<String> comments = new ArrayList<>();
 
     public DataService() {
         // Supervisor
-        teamMembers.add(new TeamMember("Maryam Adel", "Supervisor", "Supervision", "https://randomuser.me/api/portraits/women/43.jpg"));
-        
+        teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "https://randomuser.me/api/portraits/women/43.jpg"));
+
         // Security Team
-        teamMembers.add(new TeamMember("Omar Abdo", "Member", "Security Team", "https://randomuser.me/api/portraits/men/68.jpg"));
-        teamMembers.add(new TeamMember("Mohamed Hesham", "Member", "Security Team", "https://randomuser.me/api/portraits/men/72.jpg"));
-        teamMembers.add(new TeamMember("Michael Gameel", "Member", "Security Team", "https://randomuser.me/api/portraits/men/17.jpg"));
-        
+        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/68.jpg"));
+        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/72.jpg"));
+        teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/17.jpg"));
+
         // Monitoring Team
-        teamMembers.add(new TeamMember("Mohamed Hany", "Member", "Monitoring Team", "https://randomuser.me/api/portraits/men/22.jpg"));
-        teamMembers.add(new TeamMember("Seif Waheed", "Member", "Monitoring Team", "https://randomuser.me/api/portraits/men/36.jpg"));
-        teamMembers.add(new TeamMember("Dalia Ali", "Member", "Monitoring Team", "https://randomuser.me/api/portraits/women/65.jpg"));
-        
+        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/men/22.jpg"));
+        teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/men/36.jpg"));
+        teamMembers.add(new TeamMember("Dalia Ali", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/women/65.jpg"));
+
         // AI Team
-        teamMembers.add(new TeamMember("Kamel Ahmed", "Member", "AI Team", "https://randomuser.me/api/portraits/men/41.jpg"));
-        teamMembers.add(new TeamMember("Yassin Shaher", "Member", "AI Team", "https://randomuser.me/api/portraits/men/32.jpg"));
-        teamMembers.add(new TeamMember("Ahmed Essam", "Member", "AI Team", "https://randomuser.me/api/portraits/men/55.jpg"));
+        teamMembers.add(new TeamMember("Kamel Ahmed", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/41.jpg"));
+        teamMembers.add(new TeamMember("Yassin Shaher", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/32.jpg"));
+        teamMembers.add(new TeamMember("Ahmed Essam", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/55.jpg"));
     }
 
     public List<TeamMember> getTeamMembers() {
