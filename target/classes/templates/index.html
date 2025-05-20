@@ -8,195 +8,517 @@
             margin: 0;
             background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
             min-height: 100vh;
+            scroll-behavior: smooth;
+            padding-top: 70px; /* Add space for fixed navbar */
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
             background: #fff;
             padding: 32px 40px 40px 40px;
             border-radius: 18px;
             box-shadow: 0 8px 32px rgba(60, 72, 88, 0.13), 0 1.5px 4px rgba(60, 72, 88, 0.07);
+            text-align: center;
         }
-        h1 {
-            color: #2d3748;
-            font-size: 2.5rem;
-            margin-bottom: 0.5em;
-            letter-spacing: 1px;
-        }
-        h2 {
-            color: #3b4252;
-            margin-top: 2em;
-            margin-bottom: 0.7em;
-            font-size: 1.6rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.2em;
-        }
-        h3 {
-            color: #4f5d75;
-            margin-bottom: 0.5em;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-        .team {
-            margin-bottom: 18px;
-            padding: 16px 0 0 0;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 18px;
-        }
-        li {
-            background: #f1f5f9;
-            color: #22223b;
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            box-shadow: 0 1px 3px rgba(60,72,88,0.07);
-        }
-        .comments {
-            margin-top: 40px;
-        }
-        .comment {
-            background: linear-gradient(90deg, #e0e7ef 0%, #f8fafc 100%);
-            padding: 14px 18px;
-            border-radius: 8px;
-            margin-bottom: 14px;
-            font-size: 1.08rem;
-            color: #2d3748;
-            box-shadow: 0 1px 4px rgba(60,72,88,0.06);
-            word-break: break-word;
-        }
-        form {
-            margin-bottom: 18px;
-        }
-        form textarea {
-            width: 100%;
+        
+        /* Updated Navigation Bar Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(60, 72, 88, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 70px;
-            border-radius: 8px;
-            border: 1px solid #cbd5e1;
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 3%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            justify-content: flex-start; /* Align items to the start (left) */
+        }
+        
+        .nav-brand {
+            color: #2d3748;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 20px; /* Add spacing after logo */
+        }
+        
+        .nav-brand:hover {
+            color: #4f5d75;
+        }
+        
+        .nav-brand span {
+            color: #4f5d75;
+            margin-left: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            height: 100%;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background: none;
+            width: auto;
+            box-shadow: none;
+        }
+        
+        .nav-links li:hover {
+            transform: none;
+            box-shadow: none;
+            background: none;
+        }
+        
+        .nav-link {
+            color: #4f5d75;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
             font-size: 1.05rem;
-            resize: vertical;
-            background: #f8fafc;
-            transition: border 0.2s;
-        }
-        form textarea:focus {
-            outline: none;
-            border: 1.5px solid #4f5d75;
-            background: #fff;
-        }
-        form button {
-            margin-top: 10px;
-            background: linear-gradient(90deg, #4f5d75 0%, #22223b 100%);
-            color: #fff;
-            border: none;
+            padding: 6px 12px;
             border-radius: 6px;
-            padding: 9px 26px;
-            font-size: 1.08rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 1px 4px rgba(60,72,88,0.09);
-            transition: background 0.2s, transform 0.1s;
-        }
-        form button:hover {
-            background: linear-gradient(90deg, #22223b 0%, #4f5d75 100%);
-            transform: translateY(-2px) scale(1.03);
-        }
-        hr {
-            border: none;
-            border-top: 1.5px solid #e2e8f0;
-            margin: 24px 0 18px 0;
-        }
-        .xss-tip {
-            background: #fffbe6;
-            color: #b7791f;
-            border-left: 4px solid #ecc94b;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 1rem;
-            margin-top: 18px;
-        }
-        .member-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 10px;
-            vertical-align: middle;
-            border: 2px solid #e2e8f0;
-            background: #fff;
-        }
-        .member-info {
+            transition: all 0.3s ease;
+            height: auto;
             display: flex;
             align-items: center;
         }
-        @media (max-width: 700px) {
-            .container {
-                padding: 18px 6vw 24px 6vw;
+        
+        .nav-link:hover {
+            background: #f1f5f9;
+            color: #22223b;
+        }
+        
+        .nav-link.active {
+            background: #4f5d75;
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4f5d75;
+            cursor: pointer;
+            margin-left: auto; /* Push button to right side */
+        }
+
+        /* Modified responsive styles */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
             }
-            ul {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
                 flex-direction: column;
-                gap: 8px;
+                padding: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.3s ease;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.open {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        /* Add Team Members and Content Styles */
+        h1, h2, h3 {
+            color: #2d3748;
+            margin-top: 0;
+        }
+        
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 24px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+        
+        p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Team grid layout */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Supervisor section centered */
+        .supervisor-section {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .supervisor-section .member-card {
+            width: 280px;
+        }
+        
+        .member-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .member-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid #edf2f7;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .supervisor-card .member-photo {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #2d3748;
+        }
+        
+        .member-role {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .supervisor-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            border: 2px solid #bae6fd;
+        }
+        
+        /* Comment section styles */
+        .comment-section {
+            margin-top: 40px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .comment-form {
+            margin-bottom: 20px;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .comment-input:focus {
+            outline: none;
+            border-color: #4f5d75;
+            box-shadow: 0 0 0 3px rgba(79, 93, 117, 0.2);
+        }
+        
+        .submit-btn {
+            background: #4f5d75;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: #3c4758;
+        }
+        
+        .comments-list {
+            margin-top: 25px;
+        }
+        
+        .comment-item {
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4f5d75;
+        }
+        
+        .comment-text {
+            color: #4a5568;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .team-section {
+            margin-top: 60px;
+            scroll-margin-top: 80px; /* For smooth scrolling with fixed header */
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(237,242,247,0) 0%, rgba(237,242,247,1) 50%, rgba(237,242,247,0) 100%);
+            margin: 60px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: space-between;
+            }
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.3s ease;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.open {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .member-photo {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .supervisor-card .member-photo {
+                width: 160px;
+                height: 160px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 24px;
+                margin: 20px 15px;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Enhanced DevOps Security Using AI</h1>
-    <p style="color:#4f5d75;font-size:1.13rem;">
-        This project focuses on enhancing the security of DevOps environments by integrating Artificial 
-        Intelligence (AI) and Machine Learning (ML). The primary goal is to automate tasks like threat detection, 
-        vulnerability scanning, and incident response, creating a smoother and more secure software development 
-        process. By leveraging AI/ML, the project aims to detect unusual activities, monitor logs and network 
-        traffic in real time, and automate security checks within CI/CD pipelines.
-    </p>
-    <h2>Team Members</h2>
-    <div class="team">
-        <h3>AI Team</h3>
-        <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'AI Team'}">
-                <span class="member-info">
-                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
-                    <span th:text="${m.name}"></span>
-                </span>
-            </li>
+    <!-- Navigation Bar - UPDATED -->
+    <nav class="navbar">
+        <a href="#top" class="nav-brand">DevSec<span>Ops</span></a>
+        <ul class="nav-links">
+            <li><a href="#presentation" class="nav-link">Presentation</a></li>
+            <li><a href="#security-team" class="nav-link">Security Team</a></li>
+            <li><a href="#monitoring-team" class="nav-link">Monitoring Team</a></li>
+            <li><a href="#ai-team" class="nav-link">AI Team</a></li>
         </ul>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" id="top">
+        <!-- Project Introduction -->
+        <h1>Enhanced DevOps Security Using AI</h1>
+        <p>
+            Our project aims to revolutionize DevSecOps practices by integrating advanced AI technologies 
+            for automated security vulnerability detection, continuous monitoring, and preemptive threat 
+            analysis throughout the software development lifecycle.
+        </p>
+        
+        <!-- Supervisor Section -->
+        <div th:each="member : ${teamMembers}" th:if="${member.team == 'Supervision'}">
+            <h2>Project Supervisor</h2>
+            <div class="supervisor-section">
+                <div class="member-card supervisor-card">
+                    <img th:if="${member.photoUrl}" th:src="${member.photoUrl}" class="member-photo" alt="Supervisor Photo">
+                    <div class="member-name" th:text="${member.name}">Supervisor Name</div>
+                    <div class="member-role" th:text="${member.role}">Supervisor</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Security Team Section -->
+        <div id="security-team" class="team-section">
+            <h2>Security Team</h2>
+            <p>
+                Our security team specializes in implementing robust security practices across the development
+                pipeline, from code scanning to vulnerability assessment and threat modeling.
+            </p>
+            <div class="team-grid">
+                <div class="member-card" 
+                     th:each="member : ${teamMembers}" 
+                     th:if="${member.team == 'Security Team'}">
+                    <img th:if="${member.photoUrl}" th:src="${member.photoUrl}" class="member-photo" alt="Team Member Photo">
+                    <div class="member-name" th:text="${member.name}">Member Name</div>
+                    <div class="member-role" th:text="${member.role}">Role</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Monitoring Team Section -->
+        <div id="monitoring-team" class="team-section">
+            <h2>Monitoring Team</h2>
+            <p>
+                The monitoring team focuses on real-time system observation, performance metrics analysis, 
+                and building alerting infrastructure to ensure maximum system reliability and security.
+            </p>
+            <div class="team-grid">
+                <div class="member-card" 
+                     th:each="member : ${teamMembers}" 
+                     th:if="${member.team == 'Monitoring Team'}">
+                    <img th:if="${member.photoUrl}" th:src="${member.photoUrl}" class="member-photo" alt="Team Member Photo">
+                    <div class="member-name" th:text="${member.name}">Member Name</div>
+                    <div class="member-role" th:text="${member.role}">Role</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Team Section -->
+        <div id="ai-team" class="team-section">
+            <h2>AI Team</h2>
+            <p>
+                Our AI specialists develop and implement machine learning models for automated threat detection, 
+                predictive security analysis, and intelligent monitoring solutions.
+            </p>
+            <div class="team-grid">
+                <div class="member-card" 
+                     th:each="member : ${teamMembers}" 
+                     th:if="${member.team == 'AI Team'}">
+                    <img th:if="${member.photoUrl}" th:src="${member.photoUrl}" class="member-photo" alt="Team Member Photo">
+                    <div class="member-name" th:text="${member.name}">Member Name</div>
+                    <div class="member-role" th:text="${member.role}">Role</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <!-- Comment Section -->
+        <div class="comment-section">
+            <h2>Leave a Comment</h2>
+            <form class="comment-form" th:action="@{/comment}" method="post">
+                <textarea name="comment" class="comment-input" placeholder="Share your thoughts about the project..."></textarea>
+                <button type="submit" class="submit-btn">Submit Comment</button>
+            </form>
+            
+            <div class="comments-list" th:if="${not #lists.isEmpty(comments)}">
+                <h3>Comments</h3>
+                <div class="comment-item" th:each="comment : ${comments}">
+                    <p class="comment-text" th:text="${comment}">Comment text</p>
+                </div>
+            </div>
+            
+            <div th:if="${#lists.isEmpty(comments)}">
+                <p>No comments yet. Be the first to share your thoughts!</p>
+            </div>
+        </div>
     </div>
-    <div class="team">
-        <h3>Monitoring Team</h3>
-        <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Monitoring Team'}">
-                <span class="member-info">
-                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
-                    <span th:text="${m.name}"></span>
-                </span>
-            </li>
-        </ul>
-    </div>
-    <div class="team">
-        <h3>Security Team</h3>
-        <ul>
-            <li th:each="m : ${teamMembers}" th:if="${m.team == 'Security Team'}">
-                <span class="member-info">
-                    <img th:src="${m.photoUrl}" alt="photo" class="member-photo"/>
-                    <span th:text="${m.name}"></span>
-                </span>
-            </li>
-        </ul>
-    </div>
-    <div class="comments">
-        <h2>Comments</h2>
-        <form method="post" th:action="@{/comment}">
-            <textarea name="comment" placeholder="Leave a comment..."></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
-        <hr>
-        <div th:each="c : ${comments}" class="comment" th:utext="${c}"></div>
-    </div>
-</div>
+    
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+            });
+            
+            // Close menu when clicking a link
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                });
+            });
+            
+            // Highlight active section in navbar
+            const sections = document.querySelectorAll('.team-section');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').slice(1) === current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
