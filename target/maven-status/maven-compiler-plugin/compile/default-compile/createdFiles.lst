@@ -1,5 +1,0 @@
-com\web\DevSecOps\config\WebConfig.class
-com\web\DevSecOps\model\TeamMember.class
-com\web\DevSecOps\service\DataService.class
-com\web\DevSecOps\controller\HomeController.class
-com\web\DevSecOps\DevSecOpsApplication.class
