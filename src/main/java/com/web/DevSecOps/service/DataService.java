@@ -26,8 +26,8 @@ public class DataService {
 
         // Security Team
         teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/68.jpg"));
-        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/72.jpg"));
         teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/17.jpg"));
+        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/72.jpg"));
 
         // Monitoring Team
         teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/men/22.jpg"));

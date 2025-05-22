@@ -231,28 +231,6 @@
             </div>
         </div>
         
-        <div class="section-divider"></div>
-        
-        <!-- Comment Section -->
-        <div class="comment-section">
-            <h2>Leave a Comment</h2>
-            <form class="comment-form" th:action="@{/comment}" method="post">
-                <textarea name="comment" class="comment-input" placeholder="Share your thoughts about the project..."></textarea>
-                <button type="submit" class="submit-btn">Submit Comment</button>
-            </form>
-            
-            <div class="comments-list" th:if="${not #lists.isEmpty(comments)}">
-                <h3>Comments</h3>
-                <div class="comment-item" th:each="comment : ${comments}">
-                    <p class="comment-text" th:text="${comment}">Comment text</p>
-                </div>
-            </div>
-            
-            <div th:if="${#lists.isEmpty(comments)}">
-                <p>No comments yet. Be the first to share your thoughts!</p>
-            </div>
-        </div>
-    </div>
     
     <script>
         // Mobile menu functionality

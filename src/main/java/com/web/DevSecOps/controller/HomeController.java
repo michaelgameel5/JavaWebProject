@@ -38,12 +38,17 @@ public class HomeController {
         return "ai-team";
     }
 
+    @GetMapping("/attack")
+    public String attack(Model model) {
+        model.addAttribute("comments", dataService.getComments());
+        return "attack";
+    }
 
     @PostMapping("/comment")
     public String addComment(@RequestParam("comment") String comment) {
         if (comment != null && !comment.trim().isEmpty()) {
             dataService.addComment(comment);
         }
-        return "redirect:/";
+        return "redirect:/attack";
     }
 }

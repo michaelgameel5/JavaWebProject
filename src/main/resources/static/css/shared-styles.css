@@ -75,6 +75,75 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
+/* Team sections styling */
+.section {
+    margin: 35px 0;
+    padding: 25px 30px;
+    background-color: #f8fafc;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    text-align: left;
+    transition: transform 0.2s ease;
+    border-left: 5px solid #4f5d75;
+}
+
+.section h2 {
+    color: #2d3748;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    position: relative;
+}
+
+.section h2:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background-color: #4f5d75;
+}
+
+.section ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.section li {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    position: relative;
+    line-height: 1.5;
+    color: #4a5568;
+}
+
+.section li:before {
+    content: "•";
+    color: #4f5d75;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-size: 1.2em;
+}
+
+.section li:hover {
+    color: #2d3748;
+    transform: translateX(3px);
+    transition: all 0.2s ease;
+}
+
+/* Alternating section colors */
+.section:nth-child(odd) {
+    border-left-color: #4f5d75;
+}
+
+.section:nth-child(even) {
+    border-left-color: #718096;
+}
+
 @media (max-width: 768px) {
     .team-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -88,5 +157,18 @@ h1, h2, h3 {
     .container {
         padding: 24px;
         margin: 20px 15px;
+    }
+    
+    .section {
+        padding: 20px;
+        margin: 25px 0;
+    }
+    
+    .section h2 {
+        font-size: 1.2rem;
+    }
+    
+    .section li {
+        font-size: 0.95rem;
     }
 }
