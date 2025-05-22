@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DataService {
@@ -49,5 +50,23 @@ public class DataService {
 
     public void addComment(String comment) {
         comments.add(comment);
+    }
+    
+    public List<TeamMember> getSecurityTeamMembers() {
+        return getTeamMembers().stream()
+                .filter(member -> member.getTeam().toLowerCase().contains("security team"))
+                .collect(Collectors.toList());
+    }
+
+    public List<TeamMember> getMonitoringTeamMembers() {
+        return getTeamMembers().stream()
+                .filter(member -> member.getTeam().toLowerCase().contains("monitoring team"))
+                .collect(Collectors.toList());
+    }
+
+    public List<TeamMember> getAiTeamMembers() {
+        return getTeamMembers().stream()
+                .filter(member -> member.getTeam().toLowerCase().contains("ai team"))
+                .collect(Collectors.toList());
     }
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Security Team - DevSecOps</title>
+    <style th:replace="~{fragments/nav :: nav-styles}"></style>
+    <link rel="stylesheet" th:href="@{/css/shared-styles.css}">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: navbar}"></div>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Main Page</a>
+        <h1>Security Team</h1>
+        <p>Our security team specializes in implementing robust security practices across the development
+           pipeline, from code scanning to vulnerability assessment and threat modeling.</p>
+        
+        <div class="team-grid">
+            <div class="member-card" 
+                 th:each="member : ${teamMembers}" 
+                 th:if="${member.team == 'Security Team'}">
+                <img th:if="${member.photoUrl}" th:src="${member.photoUrl}" class="member-photo" alt="Team Member Photo">
+                <div class="member-name" th:text="${member.name}">Member Name</div>
+                <div class="member-role" th:text="${member.role}">Role</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('open');
+            });
+            
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

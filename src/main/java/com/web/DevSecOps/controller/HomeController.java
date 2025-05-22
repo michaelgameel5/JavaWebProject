@@ -20,6 +20,25 @@ public class HomeController {
         return "index";
     }
 
+     @GetMapping("/security-team")
+    public String securityTeam(Model model) {
+        model.addAttribute("teamMembers", dataService.getSecurityTeamMembers());
+        return "security-team";
+    }
+
+    @GetMapping("/monitoring-team")
+    public String monitoringTeam(Model model) {
+        model.addAttribute("teamMembers", dataService.getMonitoringTeamMembers());
+        return "monitoring-team";
+    }
+
+    @GetMapping("/ai-team")
+    public String aiTeam(Model model) {
+        model.addAttribute("teamMembers", dataService.getAiTeamMembers());
+        return "ai-team";
+    }
+
+
     @PostMapping("/comment")
     public String addComment(@RequestParam("comment") String comment) {
         if (comment != null && !comment.trim().isEmpty()) {
