@@ -22,22 +22,22 @@ public class DataService {
 
     public DataService() {
         // Supervisor
-        teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "https://randomuser.me/api/portraits/women/43.jpg"));
+        teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "/images/maryam.png"));
 
         // Security Team
-        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/68.jpg"));
-        teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/17.jpg"));
-        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "https://randomuser.me/api/portraits/men/72.jpg"));
+        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.png"));
+        teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "/images/michael.jpg"));
+        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "/images/mohamedh.png"));
 
         // Monitoring Team
-        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/men/22.jpg"));
-        teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/men/36.jpg"));
-        teamMembers.add(new TeamMember("Dalia Ali", MEMBER, MONITORING_TEAM, "https://randomuser.me/api/portraits/women/65.jpg"));
+        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "/images/mohamedha.png"));
+        teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "/images/seif.png"));
+        teamMembers.add(new TeamMember("Dalia Ali", MEMBER, MONITORING_TEAM, "/images/dalia.jpg"));
 
         // AI Team
-        teamMembers.add(new TeamMember("Kamel Ahmed", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/41.jpg"));
-        teamMembers.add(new TeamMember("Yassin Shaher", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/32.jpg"));
-        teamMembers.add(new TeamMember("Ahmed Essam", MEMBER, AI_TEAM, "https://randomuser.me/api/portraits/men/55.jpg"));
+        teamMembers.add(new TeamMember("Kamel Ahmed", MEMBER, AI_TEAM, "/images/kamel.png"));
+        teamMembers.add(new TeamMember("Yassin Shaher", MEMBER, AI_TEAM, "/images/yassin.png"));
+        teamMembers.add(new TeamMember("Ahmed Essam", MEMBER, AI_TEAM, "/images/ahmed.jpg"));
     }
 
     public List<TeamMember> getTeamMembers() {
