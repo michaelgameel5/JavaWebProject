@@ -37,6 +37,11 @@ public class HomeController {
         model.addAttribute("teamMembers", dataService.getAiTeamMembers());
         return "ai-team";
     }
+    
+    @GetMapping("/presentation")
+    public String presentation(Model model) {
+        return "presentation";
+    }
 
     @GetMapping("/attack")
     public String attack(Model model) {
