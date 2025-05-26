@@ -22,21 +22,21 @@ public class DataService {
 
     public DataService() {
         // Supervisor
-        teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "/images/maryam.png"));
+        teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "/images/maryam.jpg"));
 
         // Security Team
-        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.png"));
+        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.jpg"));
         teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "/images/michael.jpg"));
-        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "/images/mohamedh.png"));
+        teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "/images/mohamedhesham.jpeg"));
 
         // Monitoring Team
-        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "/images/mohamedha.png"));
-        teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "/images/seif.png"));
+        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "/images/hany.jpg"));
+        teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "/images/seif.jpg"));
         teamMembers.add(new TeamMember("Dalia Ali", MEMBER, MONITORING_TEAM, "/images/dalia.jpg"));
 
         // AI Team
-        teamMembers.add(new TeamMember("Kamel Ahmed", MEMBER, AI_TEAM, "/images/kamel.png"));
-        teamMembers.add(new TeamMember("Yassin Shaher", MEMBER, AI_TEAM, "/images/yassin.png"));
+        teamMembers.add(new TeamMember("Kamel Ahmed", MEMBER, AI_TEAM, "/images/kamel.jpg"));
+        teamMembers.add(new TeamMember("Yassin Shaher", MEMBER, AI_TEAM, "/images/yassin.jpg"));
         teamMembers.add(new TeamMember("Ahmed Essam", MEMBER, AI_TEAM, "/images/ahmed.jpg"));
     }
 

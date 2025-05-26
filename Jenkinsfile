@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'main', credentialsId: 'Github-token', url: 'https://github.com/Omar-Abduh/DevSecOps-CI-test.git'
+        git branch: 'main', credentialsId: 'Github-token', url: 'https://github.com/Omar-Abduh/DevSecOps-CI.git'
       }
     }
   

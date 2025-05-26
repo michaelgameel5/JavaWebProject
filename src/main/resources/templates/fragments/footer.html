@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:fragment="footer-styles">
+        <style>
+            .footer {
+                background: #f8f9fa;
+                padding: 20px 3%; /* Reduced padding from 40px to 20px */
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                color: #4f5d75;
+                font-size: 0.9rem;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            .footer-bottom {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px; /* Reduced margin from 30px to 10px */
+                font-size: 0.8rem;
+                color: #6c757d;
+            }
+
+            @media (max-width: 768px) {
+                .footer {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </th:block>
+</head>
+<body>
+    <th:block th:fragment="footer">
+        <footer class="footer">
+            <div class="footer-bottom">
+                &copy; 2025 SEC Team - DevSecOps. All rights reserved.
+            </div>
+        </footer>
+    </th:block>
+</body>
+</html>
