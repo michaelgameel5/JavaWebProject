@@ -129,11 +129,11 @@
 
         /* Image styling */
         .slide img {
-            max-width: 90%;
-            max-height: 70vh; /* This max-height should now respect the new slide height */
+            max-width: 100%;
+            max-height: 100vh; /* This max-height should now respect the new slide height */
             margin: 0 auto;
             display: block;
-            border-radius: 4px;
+            border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
@@ -448,15 +448,13 @@
             </div>
         </section>
 
-        <section class="slide" id="system-diagram">
+        <section class="slide current" id="slide1">
             <div class="slide-content-wrap text-center">
-                <h2 class="slide-header">System Overview Diagram</h2>
-                <div class="slide-content">
-                    <img th:src="@{/images/system-diagram.png}" alt="System Architecture Diagram" onerror="this.style.display='none'">
-                    <p class="text-center" style="margin-top: 20px; font-style: italic;">Comprehensive view of the system architecture and components</p>
-                </div>
+                <h2 class="slide-header animate-fade-in">System Overview Diagram</h2>
+                <!-- <p class="tagline animate-fade-in"></p> -->
             </div>
         </section>
+
 
         <section class="slide" id="system-components">
             <div class="slide-content-wrap">
@@ -508,6 +506,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="slide current" id="slide1">
+            <div class="slide-content-wrap text-center">
+                <h2 class="slide-header animate-fade-in">Similar Systems</h2>
+                <!-- <p class="tagline animate-fade-in"></p> -->
             </div>
         </section>
 

@@ -25,8 +25,8 @@ public class DataService {
         teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "/images/maryam.jpg"));
 
         // Security Team
-        teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "/images/michael.jpg"));
         teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.jpg"));
+        teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "/images/michael.jpg"));
         teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "/images/mohamedhesham.jpeg"));
 
         // Monitoring Team
