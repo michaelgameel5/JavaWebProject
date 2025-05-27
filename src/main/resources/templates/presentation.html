@@ -321,61 +321,6 @@
             background-color: #333; /* Dark background for footer */
             color: white;
             text-align: center;
-           
-            gap: 30px;
-            margin-top: 2rem;
-        }
-
-        .grid-item {
-            background-color: rgba(0,0,0,0.02);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--slide-border);
-        }
-
-        /* Text alignments */
-        .text-center {
-            text-align: center;
-        }
-
-        .text-left {
-            text-align: left;
-        }
-
-        /* Background colors */
-        .bg-primary {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .bg-light {
-            background-color: #f5f5f5;
-        }
-
-        .bg-dark {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Custom transition animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* NEW: Styles for the fixed footer */
-        .fixed-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #333; /* Dark background for footer */
-            color: white;
-            text-align: center;
             padding: 15px 0; /* Adjust padding as needed */
             height: var(--footer-height); /* Explicitly set height */
             box-sizing: border-box; /* Include padding in height */
@@ -386,10 +331,32 @@
             justify-content: center;
             align-items: center;
         }
+
+        /* Logo styling for all slides */
+        .slide-logo {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000; /* Ensure it stays above slide content */
+            width: 120px; /* Adjust size as needed */
+            height: auto;
+            opacity: 0.9;
+        }
+
+        /* Ensure the logo doesn't interfere with slide content */
+        .slide-content-wrap {
+            padding-top: 20px; /* Add some space at the top if needed */
+        }
     </style>
 </head>
 <body>
     <div th:replace="~{fragments/nav :: navbar}"></div>
+    
+    <!-- Add the SUT logo that will appear on all slides -->
+    <div class="slide-logo">
+        <img th:src="@{/images/sut.png}" alt="SU Tech Elsewedy University Logo">
+    </div>
+    
     <div id="webslides">
         <div class="progress-bar" id="progress-bar"></div>
 

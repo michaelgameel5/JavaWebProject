@@ -12,24 +12,24 @@
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 2px dashed #B91C1C;
+            border: 2px dashed #B91C1C !important;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
         
         .vulnerable-section h2 {
             color: #B91C1C;
-        }
-        
-        .vulnerable-note {
-            background-color: #FEE2E2;
-            color: #B91C1C;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-weight: 500;
+            margin-top: 0;
         }
         
         .comment-form {
             margin-bottom: 20px;
+            width: 100%;
         }
         
         .comment-input {
@@ -42,6 +42,7 @@
             margin-bottom: 15px;
             resize: vertical;
             min-height: 80px;
+            box-sizing: border-box;
         }
         
         .submit-btn {
