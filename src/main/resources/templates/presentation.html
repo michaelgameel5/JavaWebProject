@@ -5,548 +5,610 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevSecOps Presentation</title>
     <link rel="stylesheet" th:href="@{/css/shared-styles.css}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style th:replace="fragments/nav :: nav-styles"></style>
     <style>
-        /* Enhanced presentation styling */
+        /* WebSlides-inspired styling */
         :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --secondary: #3f37c9;
-            --accent: #f72585;
-            --dark: #2b2d42;
-            --light: #f8f9fa;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #ef233c;
-            --gray-100: #f8f9fa;
-            --gray-200: #e9ecef;
-            --gray-300: #dee2e6;
-            --gray-800: #343a40;
+            --accent-color: #3E82F7;
+            --background-color: #FAFAFA;
+            --text-color: #333333;
+            --text-secondary: #757575;
+            --slide-border: rgba(0, 0, 0, 0.1);
+            --slide-transition: all 0.3s ease-out;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            background-attachment: fixed;
-        }
-        
-        .presentation-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .slide {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
-            padding: 50px;
-            margin-bottom: 50px;
-            box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
-            transition: all 0.3s ease-in-out;
-            position: relative;
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            height: 100%;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.18);
         }
         
-        .slide::before {
-            content: '';
+        /* Main container */
+        #webslides {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        /* Individual slides */
+        .slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            transition: var(--slide-transition);
+            opacity: 0;
+            pointer-events: none;
+            padding: 40px;
+            box-sizing: border-box;
         }
         
+        .slide.current {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        
+        /* Slide content container */
+        .slide-content-wrap {
+            max-width: 1000px;
+            width: 100%;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        
+        /* Headers */
         .slide-header {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 35px;
-            color: var(--dark);
-            padding: 10px 25px;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
             text-align: center;
-            letter-spacing: 0.5px;
         }
         
-        .slide-header::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 2px;
+        /* Subheaders for slides */
+        .slide h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
         }
         
+        /* Content styling */
         .slide-content {
-            text-align: left;
-            font-size: 1.15rem;
+            font-size: 1.3rem;
             line-height: 1.6;
-            color: var(--gray-800);
         }
         
-        /* Styling for lists */
+        /* List styling */
         .slide ul {
             padding-left: 25px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         
         .slide li {
-            margin-bottom: 18px;
+            margin-bottom: 1rem;
             line-height: 1.6;
-            position: relative;
         }
         
         .slide li strong {
-            color: var(--primary);
+            color: var(--accent-color);
             font-weight: 600;
         }
         
         .slide ul ul {
-            margin-top: 12px;
+            margin-top: 0.5rem;
         }
         
         .slide ul ul li {
-            margin-bottom: 10px;
-            list-style-type: none;
-            padding-left: 20px;
-            position: relative;
+            margin-bottom: 0.5rem;
+            list-style-type: circle;
         }
         
-        .slide ul ul li::before {
-            content: '•';
-            color: var(--accent);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        
-        /* Special styling for workflow slide */
-        #workflow .slide-content {
-            text-align: center;
-        }
-        
-        #workflow img {
+        /* Image styling */
+        .slide img {
             max-width: 90%;
-            height: auto;
-            background-color: #2d3748;
-            padding: 25px;
-            border-radius: 12px;
+            max-height: 70vh;
             margin: 0 auto;
             display: block;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            border-radius: 4px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
-        #workflow img:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Navigation controls */
-        .slide-navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-            gap: 25px;
-        }
-        
-        .nav-button {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-        }
-        
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(67, 97, 238, 0.4);
-        }
-        
-        .nav-button:active {
-            transform: translateY(1px);
-        }
-        
-        .nav-button:disabled {
-            background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .slide-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 80%;
-            padding: 15px;
-        }
-        
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: var(--gray-300);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .dot:hover {
-            background-color: var(--gray-400);
-            transform: scale(1.2);
-        }
-        
-        .dot.active {
-            background-color: var(--primary);
-            transform: scale(1.2);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-        }
-        
-        /* Special styling for first slide */
+        /* Special styling for title slide */
         #slide1 {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.8) 100%);
-            text-align: center;
-            padding-top: 60px;
-            padding-bottom: 60px;
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
         }
         
         #slide1 .slide-header {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+            font-size: 4.5rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        /* System diagram slide */
-        #system-diagram img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 12px;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        #slide1 .tagline {
+            font-size: 1.8rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
         }
         
-        /* Animations for slide transitions */
+        /* Navigation controls */
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-button {
+            background-color: rgba(0,0,0,0.1);
+            color: var(--text-color);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.5rem;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--accent-color);
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+        
+        /* Counter */
+        .counter {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            z-index: 100;
+        }
+        
+        /* Arrow indicators */
+        .arrow-left, .arrow-right {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.1);
+            color: var(--text-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.2s ease;
+            font-size: 1.5rem;
+        }
+        
+        .arrow-left {
+            left: 30px;
+        }
+        
+        .arrow-right {
+            right: 30px;
+        }
+        
+        .arrow-left:hover, .arrow-right:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-header {
+                font-size: 2.5rem;
+            }
+            
+            #slide1 .slide-header {
+                font-size: 3rem;
+            }
+            
+            .slide-content {
+                font-size: 1.1rem;
+            }
+            
+            .arrow-left, .arrow-right {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Grid layout for content that needs it */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .grid-item {
+            background-color: rgba(0,0,0,0.02);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--slide-border);
+        }
+        
+        /* Text alignments */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-left {
+            text-align: left;
+        }
+        
+        /* Background colors */
+        .bg-primary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .bg-light {
+            background-color: #f5f5f5;
+        }
+        
+        .bg-dark {
+            background-color: #333;
+            color: white;
+        }
+        
+        /* Custom transition animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .slide {
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .slide {
-                padding: 30px;
-                margin-bottom: 30px;
-            }
-            
-            .slide-header {
-                font-size: 1.8rem;
-            }
-            
-            .slide-content {
-                font-size: 1rem;
-            }
-            
-            #slide1 .slide-header {
-                font-size: 2.2rem;
-            }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
         }
     </style>
 </head>
 <body>
     <nav th:replace="fragments/nav :: navbar"></nav>
     
-    <div class="presentation-container">
-        <div class="slide" id="slide1">
-            <h2 class="slide-header">Project Motivation</h2>
-        </div>
+    <div id="webslides">
+        <!-- Progress bar -->
+        <div class="progress-bar" id="progress-bar"></div>
         
-        <div class="slide" id="scientific-perspective">
-            <h2 class="slide-header">Scientific Perspective</h2>
-            <div class="slide-content">
-                <ul>
-                    <li><strong>Research Gaps:</strong>
-                        <ul>
-                            <li>Lack of scalable, real-time anomaly detection in DevOps environments.</li>
-                            <li>Insufficient integration of AI/ML for contextual threat analysis in CI/CD pipelines.</li>
-                            <li>Limited automation in vulnerability assessment and incident response.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Relevant Studies:</strong>
-                        <ul>
-                            <li>Studies show that integrating AI into CI/CD pipelines can streamline vulnerability assessments and reduce the time to remediate issues.</li>
-                            <li>Machine learning models can be trained to detect anomalies, reducing false positives and enhancing the speed of threat detection.</li>
-                            <li>Security tools that disrupt developer's workflow slow down development and discourage adoption.</li>
-                        </ul>
-                    </li>
-                </ul>
+        <!-- Title Slide -->
+        <section class="slide current" id="slide1">
+            <div class="slide-content-wrap text-center">
+                <h2 class="slide-header animate-fade-in">DevSecOps Project</h2>
+                <p class="tagline animate-fade-in">AI-Powered Security Automation for Modern Development</p>
             </div>
-        </div>
+        </section>
         
-        <div class="slide" id="market-perspective">
-            <h2 class="slide-header">Market Perspective</h2>
-            <div class="slide-content">
-                <ul>
-                    <li><strong>Market Demand:</strong>
-                        <ul>
-                            <li>Rising DevOps and cloud use.</li>
-                            <li>Increasing focus on automation in security.</li>
-                            <li>Operational processes enabling speed and efficiency.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Potential Impact:</strong>
-                        <ul>
-                            <li><strong>Users:</strong> Faster, more secure deployments with less manual work.</li>
-                            <li><strong>Stakeholders:</strong> Lower breach risks, compliance ease, and cost efficiency.</li>
-                            <li><strong>For Industry:</strong> Setting new standards for secure, efficient software delivery.</li>
-                        </ul>
-                    </li>
-                </ul>
+        <!-- Scientific Perspective -->
+        <section class="slide" id="scientific-perspective">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">Scientific Perspective</h2>
+                <div class="slide-content">
+                    <ul>
+                        <li><strong>Research Gaps:</strong>
+                            <ul>
+                                <li>Lack of scalable, real-time anomaly detection in DevOps environments.</li>
+                                <li>Insufficient integration of AI/ML for contextual threat analysis in CI/CD pipelines.</li>
+                                <li>Limited automation in vulnerability assessment and incident response.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Relevant Studies:</strong>
+                            <ul>
+                                <li>Studies show that integrating AI into CI/CD pipelines can streamline vulnerability assessments and reduce the time to remediate issues.</li>
+                                <li>Machine learning models can be trained to detect anomalies, reducing false positives and enhancing the speed of threat detection.</li>
+                                <li>Security tools that disrupt developer's workflow slow down development and discourage adoption.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <div class="slide" id="system-diagram">
-            <h2 class="slide-header">System Overview Diagram</h2>
-        </div>
+        <!-- Market Perspective -->
+        <section class="slide" id="market-perspective">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">Market Perspective</h2>
+                <div class="slide-content">
+                    <ul>
+                        <li><strong>Market Demand:</strong>
+                            <ul>
+                                <li>Rising DevOps and cloud use.</li>
+                                <li>Increasing focus on automation in security.</li>
+                                <li>Operational processes enabling speed and efficiency.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Potential Impact:</strong>
+                            <ul>
+                                <li><strong>Users:</strong> Faster, more secure deployments with less manual work.</li>
+                                <li><strong>Stakeholders:</strong> Lower breach risks, compliance ease, and cost efficiency.</li>
+                                <li><strong>For Industry:</strong> Setting new standards for secure, efficient software delivery.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- System Diagram -->
+        <section class="slide" id="system-diagram">
+            <div class="slide-content-wrap text-center">
+                <h2 class="slide-header">System Overview Diagram</h2>
+                <!-- Placeholder for diagram image -->
+                <div class="slide-content">
+                    <img th:src="@{/images/system-diagram.png}" alt="System Architecture Diagram" onerror="this.style.display='none'">
+                    <p class="text-center" style="margin-top: 20px; font-style: italic;">Comprehensive view of the system architecture and components</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="slide" id="system-components">
-            <h2 class="slide-header">System Overview</h2>
-            <div class="slide-content">
-                <ul>
-                    <li><strong>Main Components:</strong>
-                        <ul>
-                            <li><strong>Anomaly Detection:</strong> Real-time log analysis using Isolation Forest</li>
-                            <li><strong>Vulnerability Scanning:</strong> Code and Docker image scanning with SonarQube and Trivy</li>
-                            <li><strong>Integration with CI/CD Pipelines:</strong> Ensures security is an integral part of the development lifecycle, rather than an afterthought</li>
-                            <li><strong>Log Management:</strong> Centralized log aggregation and visualization with ELK Stack</li>
-                            <li><strong>Monitoring Dashboard:</strong> Real-time application health tracking and alerts</li>
-                        </ul>
-                    </li>
-                </ul>
+        <!-- System Components -->
+        <section class="slide" id="system-components">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">System Components</h2>
+                <div class="slide-content">
+                    <ul>
+                        <li><strong>Main Components:</strong>
+                            <ul>
+                                <li><strong>Anomaly Detection:</strong> Real-time log analysis using Isolation Forest</li>
+                                <li><strong>Vulnerability Scanning:</strong> Code and Docker image scanning with SonarQube and Trivy</li>
+                                <li><strong>Integration with CI/CD Pipelines:</strong> Ensures security is an integral part of the development lifecycle, rather than an afterthought</li>
+                                <li><strong>Log Management:</strong> Centralized log aggregation and visualization with ELK Stack</li>
+                                <li><strong>Monitoring Dashboard:</strong> Real-time application health tracking and alerts</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <div class="slide" id="system-overview">
-            <h2 class="slide-header">System Overview</h2>
-            <div class="slide-content">
-                <ul>
-                    <li><strong>Tools and Technologies:</strong>
-                        <ul>
-                            <li><strong>AI/ML:</strong> Isolation Forest, GenAI</li>
-                            <li><strong>CI/CD:</strong> Jenkins, GitHub Actions</li>
-                            <li><strong>Security:</strong> SonarQube, Trivy, OWASP ZAP</li>
-                            <li><strong>Log Management:</strong> ELK Stack (Elasticsearch, Logstash, Kibana)</li>
-                            <li><strong>Cloud:</strong> AWS EC2, S3, CloudWatch</li>
-                            <li><strong>Automation:</strong> GenAI APIs (OpenAI, DeepSeek)</li>
-                        </ul>
-                    </li>
-                </ul>
+        <!-- System Tools -->
+        <section class="slide" id="system-overview">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">Tools & Technologies</h2>
+                <div class="slide-content">
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>AI/ML</h3>
+                            <p>Isolation Forest, GenAI</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>CI/CD</h3>
+                            <p>Jenkins, GitHub Actions</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>Security</h3>
+                            <p>SonarQube, Trivy, OWASP ZAP</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>Log Management</h3>
+                            <p>ELK Stack (Elasticsearch, Logstash, Kibana)</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>Cloud</h3>
+                            <p>AWS EC2, S3, CloudWatch</p>
+                        </div>
+                        <div class="grid-item">
+                            <h3>Automation</h3>
+                            <p>GenAI APIs (OpenAI, DeepSeek)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="slide" id="similar-systems">
-            <h2 class="slide-header">Similar Systems</h2>
-        </div>
-    
-        
-        <div class="slide" id="similar-system-1">
-            <h2 class="slide-header">Similar System (1)</h2>
-            <div class="slide-content">
-                <h3>DevOps practices and services (DataArt)</h3>
-                <ul>
-                    <li>Focus on Hyper-Automation and AI-Driven</li>
-                    <li>InsightsUnified Platform for DevOps and Platform Engineering</li>
-                    <li>Enhanced Security and Compliance (DevSecOps)</li>
-                </ul>
+        <!-- Similar Systems -->
+        <section class="slide" id="similar-systems">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">Similar Systems</h2>
+                <div class="slide-content">
+                    <div class="grid">
+                        <div class="grid-item">
+                            <h3>DataArt DevOps</h3>
+                            <ul>
+                                <li>Hyper-Automation</li>
+                                <li>AI-Driven Insights</li>
+                                <li>Platform Engineering</li>
+                                <li>DevSecOps Integration</li>
+                            </ul>
+                        </div>
+                        <div class="grid-item">
+                            <h3>IBM DevOps Cloud</h3>
+                            <ul>
+                                <li>Urban Code Deploy</li>
+                                <li>Smart Cloud Continuous Delivery</li>
+                                <li>Tekton Integration</li>
+                                <li>Instana APM</li>
+                                <li>Cloud Pak App</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <div class="slide" id="similar-system-3">
-            <h2 class="slide-header">Similar System (2)</h2>
-            <div class="slide-content">
-                <h3>DevOps Cloud (IBM)</h3>
-                <ul>
-                    <li>Urban Code Deploy</li>
-                    <li>IBM Smart Cloud Continuous Delivery</li>
-                    <li>Tekton</li>
-                    <li>IBM Instana APM</li>
-                    <li>IBM Rational Test Workbench</li>
-                    <li>IBM Cloud Pak App</li>
-                    <li>Jenkins and GitHub</li>
-                </ul>
+        <!-- System Unique Features -->
+        <section class="slide" id="system-unique">
+            <div class="slide-content-wrap">
+                <h2 class="slide-header">What Makes Our System Unique?</h2>
+                <div class="slide-content">
+                    <ul class="features-list">
+                        <li><strong>AI-Powered Log Analysis & Threat Detection</strong> - Intelligent anomaly detection using machine learning</li>
+                        <li><strong>End-to-End Automation</strong> - From code scanning to deployment and monitoring</li>
+                        <li><strong>Multi-layered AI approach</strong> - For both detection and remediation</li>
+                        <li><strong>Continuous Monitoring</strong> - Real-time threat intelligence and alerts</li>
+                        <li><strong>Quality-First Approach</strong> - Code quality and vulnerability checks pre-deployment</li>
+                        <li><strong>Cost Effectiveness</strong> - Open source tools with efficient implementation</li>
+                        <li><strong>Compliance Focus</strong> - Adherence to industry standards</li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="slide" id="system-unique">
-            <h2 class="slide-header">What Makes Our System Unique?</h2>
-            <div class="slide-content">
-                <ul>
-                    <li>AI-Powered Log Analysis & Threat Detection</li>
-                    <li>End-to-End Automation</li>
-                    <li>Multi-layered AI approach</li>
-                    <li>Continuous Monitoring & AI-Driven Threat Detection</li>
-                    <li>Check code Quality and Vulnerability before deploying</li>
-                    <li>Cost effective and efficient</li>
-                    <li>Compliance with industry standard</li>
-                </ul>
+        <!-- Workflow -->
+        <section class="slide" id="workflow">
+            <div class="slide-content-wrap text-center">
+                <h2 class="slide-header">Workflow</h2>
+                <div class="slide-content">
+                    <img th:src="@{/images/workflow.png}" alt="System Workflow Diagram">
+                    <p style="margin-top: 20px; font-style: italic;">DevSecOps workflow showing interactions between Developers, Security Team, AI Team and Monitoring Team</p>
+                </div>
             </div>
-        </div>
-
-        <div class="slide" id="workflow">
-            <h2 class="slide-header">WorkFlow</h2>
-            <div class="slide-content">
-                <img th:src="@{/images/workflow.png}" alt="System Workflow Diagram">
-                <p style="margin-top: 15px; font-style: italic;">DevSecOps workflow showing interactions between Developers, Security Team, AI Team and Monitoring Team</p>
-            </div>
+        </section>
+        
+        <!-- Slide counter -->
+        <div class="counter">
+            <span id="current-slide">1</span>/<span id="total-slides"></span>
         </div>
         
-        <div class="slide-navigation">
-            <button class="nav-button" id="prev">Previous</button>
-            <button class="nav-button" id="next">Next</button>
-        </div>
-        
-        <div class="slide-dots">
-            <span class="dot active" data-slide="slide1"></span>
-            <span class="dot" data-slide="scientific-perspective"></span>
-            <span class="dot" data-slide="market-perspective"></span>
-            <span class="dot" data-slide="system-diagram"></span>
-            <span class="dot" data-slide="system-components"></span>
-            <span class="dot" data-slide="system-overview"></span>
-            <span class="dot" data-slide="workflow"></span>
-            <span class="dot" data-slide="system-unique"></span>
-            <span class="dot" data-slide="similar-system-1"></span>
-            <span class="dot" data-slide="similar-system-3"></span>
-            <span class="dot" data-slide="similar-systems"></span>
-            <span class="dot" data-slide="implementation-strategy"></span>
-        </div>
+        <!-- Arrow navigation -->
+        <div class="arrow-left" id="arrow-left">←</div>
+        <div class="arrow-right" id="arrow-right">→</div>
     </div>
     
     <script>
-        // Simple slide navigation
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.getElementById('prev');
-            const nextBtn = document.getElementById('next');
-            let currentSlide = 0;
+            const progressBar = document.getElementById('progress-bar');
+            const currentSlideEl = document.getElementById('current-slide');
+            const totalSlidesEl = document.getElementById('total-slides');
+            const arrowLeft = document.getElementById('arrow-left');
+            const arrowRight = document.getElementById('arrow-right');
             
-            // Hide all slides except the first one
-            function initSlides() {
-                slides.forEach((slide, index) => {
-                    if (index !== 0) {
-                        slide.style.display = 'none';
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            // Initialize total slides count
+            totalSlidesEl.textContent = totalSlides;
+            
+            // Show initial slide
+            updateSlide();
+            
+            // Function to update slide display
+            function updateSlide() {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('current');
+                });
+                
+                // Show current slide
+                slides[currentSlide].classList.add('current');
+                
+                // Update progress bar
+                const progress = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                // Update counter
+                currentSlideEl.textContent = currentSlide + 1;
+                
+                // Handle arrow visibility
+                arrowLeft.style.opacity = currentSlide === 0 ? '0.3' : '1';
+                arrowRight.style.opacity = currentSlide === totalSlides - 1 ? '0.3' : '1';
+            }
+            
+            // Navigate to next slide
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            }
+            
+            // Navigate to previous slide
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+            
+            // Arrow click events
+            arrowLeft.addEventListener('click', prevSlide);
+            arrowRight.addEventListener('click', nextSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                    prevSlide();
+                }
+            });
+            
+            // Swipe navigation for touch devices
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // Swiped left - go to next slide
+                    nextSlide();
+                }
+                
+                if (touchEndX > touchStartX + 50) {
+                    // Swiped right - go to previous slide
+                    prevSlide();
+                }
+            }
+            
+            // Click anywhere on slide to advance (optional)
+            slides.forEach(slide => {
+                slide.addEventListener('click', function(e) {
+                    // Only advance if clicking on the slide itself, not on interactive elements
+                    if (e.target === slide || e.target.classList.contains('slide-content-wrap')) {
+                        nextSlide();
                     }
                 });
-            }
-            
-            function showSlide(index) {
-                slides.forEach(slide => slide.style.display = 'none');
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                slides[index].style.display = 'block';
-                dots[index].classList.add('active');
-                currentSlide = index;
-                
-                // Update button states
-                prevBtn.disabled = currentSlide === 0;
-                nextBtn.disabled = currentSlide === slides.length - 1;
-            }
-            
-            // Event listeners for next and previous buttons
-            nextBtn.addEventListener('click', () => {
-                if (currentSlide < slides.length - 1) {
-                    showSlide(currentSlide + 1);
-                }
             });
-            
-            prevBtn.addEventListener('click', () => {
-                if (currentSlide > 0) {
-                    showSlide(currentSlide - 1);
-                }
-            });
-            
-            // Event listeners for dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                });
-            });
-            
-            // Initialize
-            initSlides();
-            showSlide(0);
         });
-        
-        // Add enhanced navigation with keyboard support
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-                if (currentSlide < slides.length - 1) {
-                    showSlide(currentSlide + 1);
-                }
-            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-                if (currentSlide > 0) {
-                    showSlide(currentSlide - 1);
-                }
-            }
-        });
-        
-        // Swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-        
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                // Swiped left
-                if (currentSlide < slides.length - 1) {
-                    showSlide(currentSlide + 1);
-                }
-            }
-            
-            if (touchEndX > touchStartX + 50) {
-                // Swiped right
-                if (currentSlide > 0) {
-                    showSlide(currentSlide - 1);
-                }
-            }
-        }
     </script>
 </body>
 </html>
