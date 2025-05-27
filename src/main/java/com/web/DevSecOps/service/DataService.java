@@ -25,13 +25,13 @@ public class DataService {
         teamMembers.add(new TeamMember("Maryam Adel", SUPERVISOR, SUPERVISION, "/images/maryam.jpg"));
 
         // Security Team
-        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.jpg"));
         teamMembers.add(new TeamMember("Michael Gameel", MEMBER, SECURITY_TEAM, "/images/michael.jpg"));
+        teamMembers.add(new TeamMember("Omar Abduh", MEMBER, SECURITY_TEAM, "/images/omar.jpg"));
         teamMembers.add(new TeamMember("Mohamed Hesham", MEMBER, SECURITY_TEAM, "/images/mohamedhesham.jpeg"));
 
         // Monitoring Team
-        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "/images/hany.jpg"));
         teamMembers.add(new TeamMember("Seif Waheed", MEMBER, MONITORING_TEAM, "/images/seif.jpg"));
+        teamMembers.add(new TeamMember("Mohamed Hany", MEMBER, MONITORING_TEAM, "/images/hany.jpg"));
         teamMembers.add(new TeamMember("Dalia Ali", MEMBER, MONITORING_TEAM, "/images/dalia.jpg"));
 
         // AI Team
